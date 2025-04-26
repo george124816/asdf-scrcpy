@@ -5,7 +5,7 @@ GH_REPO="https://github.com/Genymobile/scrcpy"
 get_platform() {
   case "$(uname -s)" in
     Linux)
-      echo "linux-x86_64"  # You can expand this to detect more specific Linux architectures if needed
+      echo "linux-x86_64"
       ;;
     Darwin)
       # macOS
@@ -67,13 +67,13 @@ install(){
 
 	filename_path="$download_path/archive.tar.gz"
 
-	mkdir -p "$install_path" || {
-  		echo "ERRO ao criar pasta $install_path"
+	mkdir -p "$install_path/bin" || {
+  		echo "Error to create folder $install_path"
   		exit 1
 	}
 
-	if ! tar -xvf "$filename_path" -C "$install_path" --strip-components=1; then
-		echo "Erro ao extrair o arquivo"
+	if ! tar -xvf "$filename_path" -C "$install_path/bin" --strip-components=1; then
+		echo "Error to extract file"
 		exit 1
 	fi
 } 
